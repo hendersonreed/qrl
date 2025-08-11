@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>qrl: curl a qr code</title>
+    <style>
+    body {
+      font-family: monospace;
+      padding: 2em;
+      background: white;
+      color: darkgrey;
+    }
+
+    textarea {
+      width: 60vw;
+      max-width: 60%;
+      min-width: 100%;
+      height: 8em;
+      background: white;
+      color: darkgrey;
+      border: 1px solid black;
+      padding: 1em;
+      box-sizing: border-box;
+    }
+
+    @media (max-width: 400px) {
+      textarea {
+        width: 100vw;
+        max-width: 100%;
+      }
+    }
+
+    pre {
+      width: max-content;
+      max-width: 60vw;
+      background: white;
+      padding: 1em;
+      border: 1px solid black;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      box-sizing: border-box;
+    }
+
+    @media (max-width: 400px) {
+      pre {
+        max-width: 100vw;
+        width: auto;
+      }
+    }
+    </style>
+  </head>
+  <body>
+    <h1>qrl: curl a qr code</h1>
+    <p>the simplest api for generating qr codes</p>
+    <textarea id="qrText" placeholder="Type something to encode..."></textarea>
+    <pre id="curlCmd"></pre>
+
+    <script>
+    const textArea = document.getElementById('qrText');
+    const curlCmd = document.getElementById('curlCmd');
+    const serverUrl = window.location.origin;
+
+    function updateCurl() {
+      const text = textArea.value.replace(/"/g, '\\"');
+      curlCmd.textContent = `curl -X PUT --data "${text}" ${serverUrl}/generate --output qr.png`;
+    }
+
+    textArea.addEventListener('input', updateCurl);
+    updateCurl();
+    </script>
+  </body>
+</html>
