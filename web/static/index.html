@@ -63,7 +63,7 @@
 
     function updateCurl() {
       const text = textArea.value.replace(/"/g, '\\"');
-      curlCmd.textContent = `curl -X PUT --data "${text}" ${serverUrl}/generate --output qr.png`;
+      curlCmd.textContent = `curl -X PUT --data "${text}" ${serverUrl} --output qr.png`;
     }
 
     textArea.addEventListener('input', updateCurl);
