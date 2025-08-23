@@ -4,7 +4,7 @@ I was frustrated by the huge number of bad QR code generators that are available
 
 It supports:
 
-- only 1 size (256x256)
+- no size configuration
 - no colors besides black and white
 - no web browsers, you need to `curl` it (if you navigate to it via web browser, it gives you instructions on how to `curl it`.
 
